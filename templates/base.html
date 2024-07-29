@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+</head>
+<body>
+    <!-- Flash messages container -->
+    <div class="flash-messages-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <nav>
+        <div class="nav-links">
+            <a href="{{ url_for('show_blogs') }}">Home</a>
+            <a href="{{ url_for('show_create_blog') }}">Create a Blog</a>
+            {% if 'logged_in' in session and session['logged_in'] %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+                <a href="{{ url_for('show_profile', username=session['username']) }}">My Profile</a>
+            {% else %}
+                <a href="{{ url_for('show_login') }}">Login</a>
+                <a href="{{ url_for('show_register') }}">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
