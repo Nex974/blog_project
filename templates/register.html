@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 
 {% block content %}
@@ -23,4 +24,31 @@
 
 <p>Already have an account? <a href="/login">Log in</a></p>
 
+=======
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Register</h1>
+<form action="{{ url_for('register') }}" method="post">
+
+    <h3>Username</h3>
+
+    <div>
+        <input type="text" name="username" required>
+    </div>
+
+    <div>
+        <h3>Password</h3>
+        <input type="password" name="password" required>
+    </div>
+
+    <div style="margin-top: 2%;">
+        <button type="submit">Sign In</button>
+    </div>
+</form>
+
+<p>Already have an account? <a href="/login">Log in</a></p>
+
+>>>>>>> 976a56d8d0db2a2e548b17cc3e71201426cbe004
 {% endblock %}

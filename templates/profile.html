@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block content %}
@@ -17,4 +18,25 @@
     {% endfor %}
 </div>
 
+=======
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>User {{ user }}'s posts:</h1>
+<div class="blog-container">
+    {% for item in items %}
+        <div class="blog-card">
+            <div class="blog-header">
+                <h2>{{ item[2] }}</h2> <!-- Blog Name -->
+                <p class="blog-username">Posted by: <a href="/profile/{{ item[1]  }}">{{ item[1] }}</a></p>
+                <p class="blog-date">{{ item[3] }}</p> <!-- Date -->
+            </div>
+            <div class="blog-content">
+                <p>{{ item[4] }}</p> <!-- Content -->
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+>>>>>>> 976a56d8d0db2a2e548b17cc3e71201426cbe004
 {% endblock %}
